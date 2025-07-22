@@ -1,0 +1,23 @@
+body {
+	background: #222;
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+button {
+	padding: 10px 20px;
+	font-size: 16px;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+footer {
+	background-color: #f1f1f157;
+	text-align: center;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}

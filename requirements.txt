@@ -1,0 +1,10 @@
+# WebUI
+flask
+
+# TTS
+pyttsx3
+sounddevice
+
+# STT
+git+https://github.com/openai/whisper.git
+scipy

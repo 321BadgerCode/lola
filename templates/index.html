@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LOLA</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<br>
+	<img src="/static/favicon.png" alt="LOLA Logo" style="width: 400px; height: auto;">
+	<p><span>Localized Offline Language Agent</span></p>
+	<button onclick="startListening()" style="background-color: {{ 'red' if listening else 'green' }};">
+		{{ "Stop Listening" if listening else "Start Listening" }}
+	</button>
+	<p id="last-prompt">{{ prompt if prompt }}</p>
+	<p id="last-response">{{ response if response }}</p>
+
+	<script>
+		function startListening() {
+			fetch("/toggle_listen", { method: "POST" })
+				.then(res => res.json())
+				.then(data => {
+					document.getElementById("status").innerText = data.listening ? "Listening" : "Not Listening";
+				});
+		}
+
+		function update() {
+			fetch("/update")
+				.then(res => res.json())
+				.then(data => {
+					document.getElementById("last-prompt").innerText = data.prompt || '';
+					document.getElementById("last-response").innerText = data.response || '';
+					document.querySelector("button").style.backgroundColor = data.listening ? "red" : "green";
+					document.querySelector("button").innerText = data.listening ? "Stop Listening" : "Start Listening";
+				})
+				.catch(err => console.error("Error updating:", err));
+		}
+		setInterval(update, 2000);
+	</script>
+
+	<footer>
+		<p>&copy; 2025 Badger Code. All rights reserved.</p>
+	</footer>
+</body>
+</html>
