@@ -25,4 +25,5 @@ def update():
 if __name__ == "__main__":
 	t = threading.Thread(target=assistant_loop, daemon=True)
 	t.start()
-	app.run(debug=True, use_reloader=False)
+	# app.run(debug=True, use_reloader=False)
+	app.run(host="0.0.0.0", port=5000)

@@ -46,7 +46,7 @@ def transcribe_whisper(audio_path):
 	result = model.transcribe(audio_path)
 	return result["text"]
 
-def record_audio(seconds=7.5, samplerate=16000):
+def record_audio(seconds=5, samplerate=16000):
 	audio = sd.rec(int(seconds * samplerate), samplerate=samplerate, channels=1)
 	sd.wait()
 	with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as f:
@@ -96,7 +96,7 @@ def assistant_loop():
 			continue
 
 		# Always listening
-		audio_path = record_audio(seconds=5)
+		audio_path = record_audio()
 		transcription = transcribe_whisper(audio_path)
 		os.remove(audio_path)
 
@@ -105,12 +105,13 @@ def assistant_loop():
 
 		var.last_prompt = transcription
 
-		# User interrupted – stop any ongoing speech
+		# User interrupted: stop any ongoing speech
 		tts.stop()
 
 		if "stop" in transcription.lower():
 			var.is_listening = False
 			tts.speak("Okay, I stopped listening.")
+			var.last_resp = "Okay, I stopped listening."
 			continue
 
 		# Check if needs MCP (API)

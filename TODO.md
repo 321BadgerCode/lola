@@ -1,0 +1,7 @@
+- [ ] More MCP API's.
+  - Location
+- [ ] Improve user interupt of AI speaking.
+- [ ] API calls get put into context window and fed back to AI for more appropriate responses.
+- [ ] UI improvements.
+- [ ] Better documentation / comments.
+- [ ] If user talking, continue recording until stopped.

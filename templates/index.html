@@ -20,9 +20,7 @@
 		function startListening() {
 			fetch("/toggle_listen", { method: "POST" })
 				.then(res => res.json())
-				.then(data => {
-					document.getElementById("status").innerText = data.listening ? "Listening" : "Not Listening";
-				});
+				.then(data => {});
 		}
 
 		function update() {
