@@ -1,3 +1,4 @@
+- [ ] Ensure cross-compatability.
 - [ ] More MCP API's.
   - Location
 - [ ] Improve user interupt of AI speaking.
