@@ -104,6 +104,7 @@ $ docker compose down
 $ docker compose down --volumes --remove-orphans # Remove volumes and orphan containers
 $ docker images # List docker images
 $ docker rmi lola-web # Remove the Docker image
+$ docker network rm lola_default # Remove the network interface for LOLA
 ```
 
 ## 🖼️ Screenshots
